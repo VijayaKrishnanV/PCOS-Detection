@@ -1,32 +1,43 @@
 # PCOS-Detection
-Engineered a machine learning solution using Random Forest to identify Polycystic Ovary Syndrome (PCOS) from demographic and clinical parameters, achieving significant accuracy and enhancing personalized healthcare by pinpointing individuals at risk.
 
-PCOS Detection Using Machine Learning
-This project utilizes machine learning techniques to predict the likelihood of Polycystic Ovary Syndrome (PCOS) based on various patient parameters. The steps involved are as follows:
+This Python script implements a machine learning workflow for diagnosing Polycystic Ovary Syndrome (PCOS) using a Random Forest Classifier. The script performs data loading, preprocessing, model training, evaluation, and user interaction. Below is an outline of its key components and functionality:
 
-Data Integration and Preprocessing:
+Library Imports:
 
-Data from two sources (patients with and without infertility) are merged based on patient identifiers.
-Columns are cleaned, and data types are adjusted for numerical analysis.
-Exploratory Data Analysis:
+Essential libraries for data manipulation (pandas, numpy), machine learning (sklearn), and visualization (matplotlib, seaborn) are imported.
+Data Loading:
 
-Statistical summaries and correlation matrices are generated to understand relationships between features and PCOS diagnosis.
-Model Building:
+Two datasets are loaded: one containing data for patients with PCOS and another for patients without PCOS. These datasets are merged based on a common identifier (Patient File No.).
+Data Preprocessing:
 
-A RandomForestClassifier is trained to predict PCOS status.
-The model is initially evaluated for accuracy.
-Model Tuning:
+Unnecessary columns are dropped.
+Data types are corrected, converting numeric values stored as strings into appropriate numeric formats.
+Column names are cleaned of extra spaces.
+Missing values in the dataset are handled using median imputation.
+Exploratory Data Analysis (EDA):
 
-GridSearchCV is employed to optimize the RandomForestClassifier by testing various hyperparameters.
-The model is retrained using the best parameters identified.
+Basic statistical details of the dataset are examined.
+A correlation matrix is computed and visualized to understand the relationships between features and the target variable (PCOS (Y/N)).
+Heatmaps of feature correlations are plotted to identify significant features.
+Feature and Target Assignment:
+
+Features (X) and the target variable (y) are separated. The target variable is the presence or absence of PCOS.
+Data Splitting:
+
+The dataset is split into training and test sets using a 70-30 split.
+Model Training and Tuning:
+
+A Random Forest Classifier is initially trained and evaluated.
+GridSearchCV is used to find the best hyperparameters for the model.
+The model is retrained with the best parameters found from GridSearchCV.
 Model Evaluation:
 
-Performance metrics such as accuracy, confusion matrix, and classification report are computed to assess the model's predictive capability.
-Prediction Tool:
+The final model is tested on the test set.
+Performance metrics including accuracy, classification report, and confusion matrix are computed and visualized.
+User Input and Prediction:
 
-An interactive tool allows users to input personal health metrics to receive a prediction regarding PCOS diagnosis.
-Visualization:
+The script takes user input for various health metrics and creates a new data point.
+The trained model makes a prediction based on the user input and provides an output indicating the likelihood of PCOS.
+Model Performance Visualization:
 
-Visual representations, such as bar charts, compare model accuracy before and after tuning.
-This project provides a comprehensive pipeline for detecting PCOS using machine learning, aiming to assist healthcare professionals in diagnosis and treatment planning.
-
+A bar chart is plotted to compare the accuracy of the model before and after hyperparameter tuning.
